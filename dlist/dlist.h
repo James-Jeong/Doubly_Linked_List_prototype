@@ -44,8 +44,5 @@ int dlist_find_first_node_data( dlist_t *list);
 int dlist_find_last_node_data( dlist_t *list);
 void dlist_print_all( dlist_t *list);
 
-node_t* node_create();
-void node_destroy( node_t *node);
-
 #endif
 

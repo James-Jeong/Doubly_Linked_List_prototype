@@ -1,5 +1,31 @@
 #include "dlist_int.h"
 
+// --------------------------------
+
+static node_int_t* node_int_create( int data){
+	node_int_t *node = ( node_int_t*)malloc( sizeof( node_int_t));
+	if( node == NULL){
+		return NULL;
+	}
+
+	memset( node, '\0', sizeof( node));
+
+	node->prev = NULL;
+	node->next = NULL;
+	node->data = data;
+	return node;
+}
+
+static void node_int_destroy( node_int_t *node){
+	if( node){
+		node->prev = NULL;
+		node->next = NULL;
+		free( node);
+	}
+}
+
+// --------------------------------
+
 dlist_int_t* dlist_int_create(){
 	dlist_int_t *list = ( dlist_int_t*)malloc( sizeof( dlist_int_t));
 	if( list == NULL){
@@ -226,30 +252,5 @@ int dlist_int_find_first_node_data( dlist_int_t *list){
 
 int dlist_int_find_last_node_data( dlist_int_t *list){
 	return ( list->tail->prev != NULL)? list->tail->prev->data : list->tail->data;
-}
-
-
-// --------------------------------
-
-node_int_t* node_int_create( int data){
-	node_int_t *node = ( node_int_t*)malloc( sizeof( node_int_t));
-	if( node == NULL){
-		return NULL;
-	}
-
-	memset( node, '\0', sizeof( node));
-
-	node->prev = NULL;
-	node->next = NULL;
-	node->data = data;
-	return node;
-}
-
-void node_int_destroy( node_int_t *node){
-	if( node){
-		node->prev = NULL;
-		node->next = NULL;
-		free( node);
-	}
 }
 

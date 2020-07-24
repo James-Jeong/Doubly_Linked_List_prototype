@@ -1,5 +1,43 @@
 #include "dlist_char.h"
 
+// --------------------------------
+
+static node_char_t* node_char_create( char *data){
+	node_char_t *node = ( node_char_t*)malloc( sizeof( node_char_t));
+	if( node == NULL){
+		return NULL;
+	}
+
+	node->prev = NULL;
+	node->next = NULL;
+	memcpy( node->data, data, BUF_MAX_LEN);
+//	node->data = data;
+	return node;
+}
+
+static void node_char_destroy( node_char_t *node){
+	if( node){
+		node->prev = NULL;
+		node->next = NULL;
+		if( node->data != NULL){
+			memset( node->data, '\0', sizeof( node->data));
+//			node->data = NULL;
+		}
+		free( node);
+	}
+}
+
+static char* node_char_get_data( node_char_t *node){
+	if( node == NULL){
+		return NULL;
+	}
+
+	return node->data;
+}
+
+// --------------------------------
+
+
 dlist_char_t* dlist_char_create(){
 	dlist_char_t *list = ( dlist_char_t*)malloc( sizeof( dlist_char_t));
 	if( list == NULL){
@@ -247,41 +285,5 @@ void dlist_char_print_all( dlist_char_t *list){
 		printf("	PRINT	| index_node->data : %s\n", index_node->data);
 		index_node = index_node->next;
 	}
-}
-
-
-// --------------------------------
-
-node_char_t* node_char_create( char *data){
-	node_char_t *node = ( node_char_t*)malloc( sizeof( node_char_t));
-	if( node == NULL){
-		return NULL;
-	}
-
-	node->prev = NULL;
-	node->next = NULL;
-	memcpy( node->data, data, BUF_MAX_LEN);
-//	node->data = data;
-	return node;
-}
-
-void node_char_destroy( node_char_t *node){
-	if( node){
-		node->prev = NULL;
-		node->next = NULL;
-		if( node->data != NULL){
-			memset( node->data, '\0', sizeof( node->data));
-//			node->data = NULL;
-		}
-		free( node);
-	}
-}
-
-char* node_char_get_data( node_char_t *node){
-	if( node == NULL){
-		return NULL;
-	}
-
-	return node->data;
 }
 

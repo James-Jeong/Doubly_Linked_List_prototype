@@ -51,9 +51,5 @@ node_char_t* dlist_char_find_last_node( dlist_char_t *list);
 node_char_t* dlist_char_get_prev_node( dlist_char_t *list, node_char_t *target);
 void dlist_char_print_all( dlist_char_t *list);
 
-node_char_t* node_char_create( char *data);
-void node_char_destroy( node_char_t *node);
-char* node_char_get_data( node_char_t *node);
-
 #endif
 

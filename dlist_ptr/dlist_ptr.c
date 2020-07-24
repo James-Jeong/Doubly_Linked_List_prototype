@@ -1,5 +1,46 @@
 #include "dlist_ptr.h"
 
+// --------------------------------
+
+static node_ptr_t* node_ptr_create( void *data){
+	node_ptr_t *node = ( node_ptr_t*)malloc( sizeof( node_ptr_t));
+	if( node == NULL){
+		return NULL;
+	}
+
+	if( data == NULL){
+		return NULL;
+	}
+
+	node->data = malloc( sizeof( test_t));
+	memcpy( node->data, data, sizeof( test_t));
+
+	node->prev = NULL;
+	node->next = NULL;
+
+	return node;
+}
+
+static void node_ptr_destroy( node_ptr_t *node){
+	if( node){
+		node->prev = NULL;
+		node->next = NULL;
+		if( node->data != NULL){
+			free( node->data);
+		}
+		free( node);
+	}
+}
+
+static void* node_ptr_get_data( node_ptr_t *node){
+	if( node == NULL){
+		return NULL;
+	}
+	return node->data;
+}
+
+// --------------------------------
+
 dlist_ptr_t* dlist_ptr_create(){
 	dlist_ptr_t *list = ( dlist_ptr_t*)malloc( sizeof( dlist_ptr_t));
 	if( list == NULL){
@@ -252,45 +293,5 @@ void dlist_ptr_print_all( dlist_ptr_t *list){
 		printf("	PRINT	| @ List : index_node->data : %s\n", ( char*)( ( test_t*)( index_node->data))->name);
 		index_node = index_node->next;
 	}
-}
-
-
-// --------------------------------
-
-node_ptr_t* node_ptr_create( void *data){
-	node_ptr_t *node = ( node_ptr_t*)malloc( sizeof( node_ptr_t));
-	if( node == NULL){
-		return NULL;
-	}
-
-	if( data == NULL){
-		return NULL;
-	}
-
-	node->data = malloc( sizeof( test_t));
-	memcpy( node->data, data, sizeof( test_t));
-
-	node->prev = NULL;
-	node->next = NULL;
-
-	return node;
-}
-
-void node_ptr_destroy( node_ptr_t *node){
-	if( node){
-		node->prev = NULL;
-		node->next = NULL;
-		if( node->data != NULL){
-			free( node->data);
-		}
-		free( node);
-	}
-}
-
-void* node_ptr_get_data( node_ptr_t *node){
-	if( node == NULL){
-		return NULL;
-	}
-	return node->data;
 }
 

@@ -44,10 +44,6 @@ node_int_t* dlist_int_find_node_by_node( dlist_int_t *list, node_int_t *target);
 int dlist_int_find_node_data_by_node( dlist_int_t *list, node_int_t *target);
 node_int_t* dlist_int_find_node_by_data( dlist_int_t *list, int data);
 int dlist_int_find_first_node_data( dlist_int_t *list);
-int dlist_int_find_last_node_data( dlist_int_t *list);
-
-node_int_t* node_int_create( int data);
-void node_int_destroy( node_int_t *node);
 
 #endif
 

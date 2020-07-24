@@ -1,5 +1,29 @@
 #include "dlist.h"
 
+static node_t* node_create(){
+	node_t *node = ( node_t*)malloc( sizeof( node_t));
+	if( node == NULL){
+		return NULL;
+	}
+
+	node->prev = NULL;
+	node->next = NULL;
+
+	node->data = 0;
+
+	return node;
+}
+
+static void node_destroy( node_t *node){
+	if( node){
+		node->prev = NULL;
+		node->next = NULL;
+
+		free( node);
+	}
+}
+
+
 dlist_t* dlist_create(){
 	dlist_t *list = ( dlist_t*)malloc( LIST_MAX_LEN);
 	if( list == NULL){
@@ -204,28 +228,5 @@ void dlist_print_all( dlist_t *list){
 		index_node = index_node->next;
 	}
 	printf("\n");
-}
-
-node_t* node_create(){
-	node_t *node = ( node_t*)malloc( sizeof( node_t));
-	if( node == NULL){
-		return NULL;
-	}
-
-	node->prev = NULL;
-	node->next = NULL;
-
-	node->data = 0;
-
-	return node;
-}
-
-void node_destroy( node_t *node){
-	if( node){
-		node->prev = NULL;
-		node->next = NULL;
-
-		free( node);
-	}
 }
 

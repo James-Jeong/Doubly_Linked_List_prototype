@@ -51,9 +51,5 @@ node_ptr_t* dlist_ptr_find_last_node( dlist_ptr_t *list);
 node_ptr_t* dlist_ptr_get_prev_node( dlist_ptr_t *list, node_ptr_t *target);
 void dlist_ptr_print_all( dlist_ptr_t *list);
 
-node_ptr_t* node_ptr_create( void *data);
-void node_ptr_destroy( node_ptr_t *node);
-void* node_ptr_get_data( node_ptr_t *node);
-
 #endif
 
