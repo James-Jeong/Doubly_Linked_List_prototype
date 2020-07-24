@@ -44,8 +44,7 @@ void dlist_ptr_destroy( dlist_ptr_t *list){
 				}
 			}
 		}
-		memset( list, '\0', sizeof( list));
-		free( list);
+//		free( list);
 	}
 }
 
@@ -61,7 +60,7 @@ int dlist_ptr_add_node( dlist_ptr_t *list, void *data){
 		new_node->prev = list->head;
 		list->head->next = new_node;
 		list->tail->prev = new_node;
-		printf("	| Add head next\n");
+		printf("	| @ List : Add head next\n");
 	}
 	else if( ( list->head->next != list->tail) && ( list->tail->prev != NULL)){
 		node_ptr_t *old_node = list->tail->prev;
@@ -69,7 +68,7 @@ int dlist_ptr_add_node( dlist_ptr_t *list, void *data){
 		new_node->next = list->tail;
 		old_node->next = new_node;
 		list->tail->prev = new_node;
-		printf("	| Add tail prev\n");
+		printf("	| @ List : Add tail prev\n");
 	}
 	else{
 		printf("	| ! List : unknown case in dlist_ptr_add_node\n");
@@ -97,10 +96,10 @@ int dlist_ptr_del_node_by_node( dlist_ptr_t *list, node_ptr_t *target){
 
 	while( index_node != tail){
 		index_name = ( char*)( ( test_t*)( index_node->data))->name;
-		printf("	| index_node->data : %s (len:%d)\n", index_name, strlen( index_name));
-		printf("	| data : %s (len:%d)\n", name, strlen( name));
+		printf("	| @ List : index_node->data : %s (len:%d)\n", index_name, strlen( index_name));
+		printf("	| @ List : data : %s (len:%d)\n", name, strlen( name));
 		if( index_node == target){
-			printf("	| find node : %s\n", index_name);
+			printf("	| @ List : find node : %s\n", index_name);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
 			node_ptr_destroy( index_node);
@@ -130,10 +129,10 @@ int dlist_ptr_del_node_by_data( dlist_ptr_t *list, void *data){
 
 	while( index_node != tail){
 		index_name = ( char*)( ( test_t*)( index_node->data))->name;
-		printf("	| index_node->data : %s (len:%d)\n", index_name, strlen(index_name));
-		printf("	| data : %s (len:%d)\n", name, strlen( name));
+		printf("	| @ List : index_node->data : %s (len:%d)\n", index_name, strlen(index_name));
+		printf("	| @ List : data : %s (len:%d)\n", name, strlen( name));
 		if( ( memcmp( index_name, name, strlen( index_name))) == 0){
-			printf("	| find node : %s\n", index_name);
+			printf("	| @ List : find node : %s\n", index_name);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
 			node_ptr_destroy( index_node);
@@ -250,7 +249,7 @@ void dlist_ptr_print_all( dlist_ptr_t *list){
 	node_ptr_t *index_node = list->head->next;
 	
 	while( index_node != tail){
-		printf("	PRINT	| index_node->data : %s\n", ( char*)( ( test_t*)( index_node->data))->name);
+		printf("	PRINT	| @ List : index_node->data : %s\n", ( char*)( ( test_t*)( index_node->data))->name);
 		index_node = index_node->next;
 	}
 }

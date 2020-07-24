@@ -61,7 +61,7 @@ int dlist_char_add_node( dlist_char_t *list, char *data){
 		new_node->prev = list->head;
 		list->head->next = new_node;
 		list->tail->prev = new_node;
-		printf("	| Add head next\n");
+		printf("	| @ List : Add head next\n");
 	}
 	else if( ( list->head->next != list->tail) && ( list->tail->prev != NULL)){
 		node_char_t *old_node = list->tail->prev;
@@ -69,7 +69,7 @@ int dlist_char_add_node( dlist_char_t *list, char *data){
 		new_node->next = list->tail;
 		old_node->next = new_node;
 		list->tail->prev = new_node;
-		printf("	| Add tail prev\n");
+		printf("	| @ List : Add tail prev\n");
 	}
 	else{
 		printf("	| ! List : unknown case in dlist_char_add_node\n");
@@ -94,9 +94,10 @@ int dlist_char_del_node_by_node( dlist_char_t *list, node_char_t *target){
 	node_char_t *index_node = list->head->next;
 
 	while( index_node != tail){
-		printf("	| index_node->data : %s\n", index_node->data);
+		printf("	| @ List : index_node->data : %s\n", index_node->data);
+		printf("	| @ List : data : %s (len:%d)\n", target->data, strlen( target->data));
 		if( index_node == target){
-			printf("		| find node : %s\n", index_node->data);
+			printf("		| @ List : find node : %s\n", index_node->data);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
 			node_char_destroy( index_node);
@@ -123,10 +124,10 @@ int dlist_char_del_node_by_data( dlist_char_t *list, char *data){
 	node_char_t *index_node = list->head->next;
 
 	while( index_node != tail){
-		printf("	| index_node->data : %s (len:%d)\n", index_node->data, strlen( index_node->data));
-		printf("	| data : %s (len:%d)\n", data, strlen( data));
+		printf("	| @ List : index_node->data : %s (len:%d)\n", index_node->data, strlen( index_node->data));
+		printf("	| @ List : data : %s (len:%d)\n", data, strlen( data));
 		if( ( memcmp( index_node->data, data, strlen( index_node->data))) == 0){
-			printf("		| find data : %s\n", index_node->data);
+			printf("		| @ List : find data : %s\n", index_node->data);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
 			node_char_destroy( index_node);
