@@ -10,16 +10,16 @@
 /// @enum ERROR
 /// @brief 각종 프로그램 에러 열거형
 enum ERROR{
-	RECV_COMPLETE	= 3,
+	RECV_COMPLETE		= 3,
 	NOT_RECV		= 2,
-	ERRNO_EAGAIN	= 1,
+	ERRNO_EAGAIN		= 1,
 	NORMAL			= 0,
 	FD_ERR			= -1,
 	OBJECT_ERR		= -1,
 	SOC_ERR			= -2,
 	NOT_EXIST		= -2,
 	ZERO_BYTE		= -3,
-	NEGATIVE_BYTE	= -4,
+	NEGATIVE_BYTE		= -4,
 	BUF_ERR			= -5,
 	HOST_ERR		= -6,
 	PTHREAD_ERR		= -7,
