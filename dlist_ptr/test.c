@@ -254,7 +254,7 @@ int main( int argc, char **argv){
 		printf("@ list1 last node name : %s\n", temp_test->name);
 	}
 
-	dlist_ptr_destroy( list1);
+	dlist_ptr_destroy( &list1);
 
 	printf("- dynamic pointer test end -\n\n");
 
@@ -433,9 +433,9 @@ int main( int argc, char **argv){
 
 	printf("- static pointer test end -\n\n");
 
-	test_destroy( test1);
-	test_destroy( test2);
-	test_destroy( test3);
+	test_destroy( &test1);
+	test_destroy( &test2);
+	test_destroy( &test3);
 }
 
 test_t* test_init( char *name){
@@ -453,9 +453,10 @@ test_t* test_init( char *name){
 	return test;
 }
 
-void test_destroy( test_t *test){
+void test_destroy( test_t **test){
 	if( test){
-		free( test);
+		free( *test);
+		*test = NULL;
 	}
 }
 
