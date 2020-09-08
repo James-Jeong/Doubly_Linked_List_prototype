@@ -454,7 +454,7 @@ test_t* test_init( char *name){
 }
 
 void test_destroy( test_t **test){
-	if( test){
+	if( *test){
 		free( *test);
 		*test = NULL;
 	}
