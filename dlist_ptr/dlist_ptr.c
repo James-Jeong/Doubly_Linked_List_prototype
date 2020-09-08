@@ -170,7 +170,7 @@ int dlist_ptr_del_node_by_node( dlist_ptr_t *list, node_ptr_t *target){
 			printf("	| @ List : find node : %s\n", index_name);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
-			node_ptr_destroy( index_node);
+			node_ptr_destroy( &index_node);
 			list->length--;
 			return NORMAL;
 		}
@@ -211,7 +211,7 @@ int dlist_ptr_del_node_by_data( dlist_ptr_t *list, void *data){
 			printf("	| @ List : find node : %s\n", index_name);
 			index_node->prev->next = index_node->next;
 			index_node->next->prev = index_node->prev;
-			node_ptr_destroy( index_node);
+			node_ptr_destroy( &index_node);
 			list->length--;
 			return NORMAL;
 		}
