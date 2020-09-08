@@ -12,7 +12,7 @@ struct test_s{
 };
 
 test_t* test_init( char *name);
-void test_destroy( test_t *test);
+void test_destroy( test_t **test);
 int test_set_data( test_t *test, int data);
 int test_set_name( test_t *test, char *name);
 int test_get_data( test_t *test);
